@@ -10,6 +10,7 @@ sklearn = "*"
 joblib = "*"
 flask = "*"
 pytest = "*"
+jupyter = "*"
 
 [dev-packages]
 pandas = "*"
