@@ -31,3 +31,12 @@ def test_predict_extra_queries():
 
     response = client.get(url)
     assert response.status_code == 400 #should return bad request 400
+
+def test_predict_no_queries():
+    app = Flask(__name__)
+    configure_routes(app)
+    client = app.test_client()
+    url = '/predict?'
+
+    response = client.get(url)
+    assert response.status_code == 400 #should return bad request 400
