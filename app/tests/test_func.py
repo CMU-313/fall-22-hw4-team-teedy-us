@@ -22,3 +22,21 @@ def test_predict_missing_queries():
     
     response = client.get(url)
     assert response.status_code == 400 #should return bad request 400
+
+def test_predict_missing_queries():
+    app = Flask(__name__)
+    configure_routes(app)
+    client = app.test_client()
+    url = '/predict?reasons="home"&absences=2'
+
+    response = client.get(url)
+    assert response.status_code == 400 #should return bad request 400
+
+def test_predict_extra_queries():
+    app = Flask(__name__)
+    configure_routes(app)
+    client = app.test_client()
+    url = '/predict?reasons="home"&absences=2&activies=yes&school=GP'
+
+    response = client.get(url)
+    assert response.status_code == 400 #should return bad request 400
