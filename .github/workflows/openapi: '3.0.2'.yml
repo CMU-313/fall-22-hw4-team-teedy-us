@@ -1,0 +1,68 @@
+openapi: '3.0.2'
+info:
+  title: Success Prediction Microservice
+  version: '1.0'
+servers:
+  - url: https://localhost:5000
+paths:
+  /predict:
+    get:
+      description: 'request input applicant info, send to prediction microservice, and output predicted score for G3 (final grade)'
+      parameters:
+        - name: reasons
+          in: query
+          description: reason of applying
+          required: true
+          explode: true
+          schema:
+            type: string
+            enum:
+              - home
+              - reputation
+              - course
+              - other
+        - name: activities
+          in: query
+          description: if the applicant has extra-curricular activities
+          required: true
+          explode: true
+          schema:
+            type: boolean
+        - name: absences
+          in: query
+          description: number of school absences
+          required: true
+          explode: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        '400':
+          description: Invalid input
+    
+# components:
+#   schemas: 
+#     Info:
+#       required:
+#         - name
+#         - photoUrls
+#       type: object
+#       properties:
+#         reasons:
+#           type: string
+#           description: reason of applying
+#           example: home
+#         activities:
+#           type: boolean
+#         absences:
+#           type: integer
+#           format: int64
+#           example: 10
+#       xml:
+#         name: pet
