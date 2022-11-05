@@ -2,6 +2,11 @@
 
 Please consult the [homework assignment](https://cmu-313.github.io//assignments/hw4) for additional context and instructions for this code.
 
+## Documentation and Test Suite Directory
+Swagger Documentation: /.github/workflows/openapi: '3.0.2'.yml
+
+Test Suite: /app/tests
+
 ## pipenv
 
 [pipenv](https://pipenv.pypa.io/en/latest) is a packaging tool for Python that solves some common problems associated with the typical workflow using pip, virtualenv, and the good old requirements.txt.
