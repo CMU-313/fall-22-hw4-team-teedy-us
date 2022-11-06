@@ -11,6 +11,8 @@ joblib = "*"
 flask = "*"
 pytest = "*"
 jupyter = "*"
+seaborn = "*"
+matplotlib = "*"
 
 [dev-packages]
 pandas = "*"
