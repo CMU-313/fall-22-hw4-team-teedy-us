@@ -28,6 +28,8 @@ def configure_routes(app):
 
         if Mjob_health == None or Fjob_teacher == None or studytime == None or higher_yes == None or health == None or absences == None:
             return "Invalid Parameters or Missing Parameters", 400
+        elif len(request.args) != 6:
+            return "More than or less than 6 inputs", 400
         elif Mjob_health != 1 and Mjob_health != 0:
             return "Mjob_health has to be either 1 or 0", 400
         elif Fjob_teacher != 1 and Mjob_health != 0:
