@@ -1,3 +1,8 @@
+# Updates and New Features
+
+After data exploration, we chose to base our predictions on: father’s job (Fjob), mother’s job (Mjob), absences, health, want to take higher education (higher), and study time (studytime), without specific weight of each. We found that if the student’s father’s job is as a teacher and mother’s job is in a health related field, the student is more likely to have a higher G3 score, but the G3 scores for students whose fathers and mothers have different jobs did not have significant differences, therefore we chose to only consider if father’s job is teacher and mother’s job is health (Fjob_teacher, Mjob_health). Then, for students who want to pursue a higher education, they are also likely to have a higher G3 score (higher_yes). Finally, since all integer attributes had weak correlations with G3 score, we chose some of the stronger ones. When our model was tested with the random forest classifier, we got a f1_score of 0.42 on cross-validation, compared to 0 from the original model.
+
+
 # HW4 Starter Code and Instructions
 
 Please consult the [homework assignment](https://cmu-313.github.io//assignments/hw4) for additional context and instructions for this code.
