@@ -3,31 +3,57 @@ info:
   title: Success Prediction Microservice
   version: '1.0'
 servers:
-  - url: https://localhost:5000
+  - url: http://127.0.0.1:5000
 paths:
   /predict:
     get:
       description: 'request input applicant info, send to prediction microservice, and output predicted score for G3 (final grade)'
       parameters:
-        - name: reasons
+        - name: Mjob_health
           in: query
-          description: reason of applying
+          description: whether or not the mother's job is in health
           required: true
           explode: true
           schema:
-            type: string
-            enum:
-              - home
-              - reputation
-              - course
-              - other
-        - name: activities
+            type: integer
+            minimum: 0
+            maximum: 1
+        - name: Fjob_teacher
           in: query
-          description: if the applicant has extra-curricular activities
+          description: whether or not the father's job is a teacher
           required: true
           explode: true
           schema:
-            type: boolean
+            type: integer
+            minimum: 0
+            maximum: 1
+        - name: studytime
+          in: query
+          description: weekly study time
+          required: true
+          explode: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 4
+        - name: higher_yes
+          in: query
+          description: wants to take higher education
+          required: true
+          explode: true
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 1
+        - name: health
+          in: query
+          description: current health status
+          required: true
+          explode: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 5
         - name: absences
           in: query
           description: number of school absences
@@ -35,9 +61,11 @@ paths:
           explode: true
           schema:
             type: integer
+            minimum: 0
+            maximum: 93
       responses:
         '200':
-          description: OK
+          description: OK, returns 1 or 0 signifying if a student is a good candidate.
           content:
             application/json:
               schema:
